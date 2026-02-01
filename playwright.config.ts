@@ -29,7 +29,7 @@ export default defineConfig({
   ],
   testMatch: /.*\.spec\.ts/,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 120_000,
+  timeout: Number(getEnvVar('GLOBAL_TIMEOUT', '120000')),
   expect: {
     timeout: Number(getEnvVar('WAIT_TIMEOUT', '20000')),
   },

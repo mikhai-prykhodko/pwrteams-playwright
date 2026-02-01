@@ -5,6 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
+    # need to add a self hosted runner for this workflow
 jobs:
   test:
     timeout-minutes: 10
@@ -22,8 +23,9 @@ jobs:
       env:
         BASE_URL: 'https://www.tui.nl/' 
         COUNTRY: NL
-        WAIT_TIMEOUT: 20000
+        WAIT_TIMEOUT: 30000
         RETRY_TIME: 3000
+        GLOBAL_TIMEOUT: 180000
         CI: true
       run: yarn test
     - uses: actions/upload-artifact@v4
