@@ -3,7 +3,7 @@ import {expect} from '@playwright/test';
 
 export class BookingSummaryPage extends BasePage {
   readonly elements = {
-    pageHeading: () => this.page.locator('[aria-label="page heading"]'),
+    pageHeading: () => this.page.getByLabel('page heading'),
   };
 
   /**

@@ -6,7 +6,7 @@ export class ProgressBarNavigationPage extends BasePage {
     progressContainer: () =>
       this.page.locator('#progressBarNavigation__component'),
     continueButton: () =>
-      this.page.locator('[aria-label="button"]', {
+      this.page.getByLabel('button').filter({
         hasText: new RegExp(
           `${Data.getCommonData().elements.continueButton}|${Data.getCommonData().elements.bookNowButton}`,
         ),
