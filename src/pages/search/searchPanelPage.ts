@@ -155,7 +155,9 @@ export class SearchPanelPage extends BasePage {
     let isAvailable = false;
     for (const day of days) {
       dateLocator = this.elements.departureDateCell(day.toString());
-      isAvailable = !(await this.isDisabled(dateLocator));
+      isAvailable =
+        (await dateLocator.getAttribute('class'))?.includes('available') ===
+        true;
       if (isAvailable === true) {
         logger.info(`Date: ${day} ${month}`);
         break;
@@ -189,9 +191,9 @@ export class SearchPanelPage extends BasePage {
     logger.info(`Number of adults: ${adults.length}`);
     logger.info(`Number of children: ${children.length}`);
     for (let i = 0; i < children.length; i++) {
-      await this.elements
-        .childrenAgesSelector()
-        .selectOption(children[i].age.toString());
+      const ageSelect = this.elements.childrenAgesSelector();
+      await ageSelect.waitFor({state: 'visible'});
+      await ageSelect.selectOption(children[i].age.toString());
       logger.info(`Child ${i + 1} age: ${children[i].age}`);
     }
     await this.elements.saveSelectionButton().click();
