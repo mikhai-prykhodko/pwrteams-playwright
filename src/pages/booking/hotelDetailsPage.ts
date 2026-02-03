@@ -4,7 +4,7 @@ import {expect} from '@playwright/test';
 export class HotelDetailsPage extends BasePage {
   readonly elements = {
     hotelName: () =>
-      this.page.locator('[aria-label="accomodation header"] h1 span'),
+      this.page.getByLabel('accomodation header').locator('h1 span'),
   };
 
   /**

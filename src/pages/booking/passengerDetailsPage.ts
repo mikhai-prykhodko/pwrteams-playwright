@@ -4,8 +4,8 @@ import {Data} from '../../testData/pages/passenger/data';
 
 export class PassengerDetailsPage extends BasePage {
   readonly elements = {
-    pageHeading: () => this.page.locator('[aria-label="page heading"]'),
-    payButton: () => this.page.locator('[aria-label="continue button"] button'),
+    pageHeading: () => this.page.getByLabel('page heading'),
+    payButton: () => this.page.getByLabel('continue button').locator('button'),
     passengerContainer: (passenger: string) =>
       this.page.locator(
         `[aria-label="header bar"]:has(h3:text("${passenger}")) + [class*="PassengerFormV2__passengerContainer"]`,
@@ -13,7 +13,7 @@ export class PassengerDetailsPage extends BasePage {
     passengerFieldContainer: (label: string) =>
       this.page.locator(`div[class*="Box"][aria-label="${label}"]`).last(),
     fieldInput: (label: string) =>
-      this.page.locator(`input[aria-label="${label}"]`),
+      this.page.getByLabel(label).locator('input:not([type="hidden"])'),
     errorMessage: () => this.page.locator('[class*="errorMessageWithIcon"]'),
     errorContainer: () => this.page.locator('[aria-label="alert container"]'),
     consentError: () =>

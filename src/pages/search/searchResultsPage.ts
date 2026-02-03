@@ -6,7 +6,7 @@ import {GenericWait} from '../../utils/genericWait';
 export class SearchResultsPage extends BasePage {
   readonly elements = {
     selectHotelButton: () =>
-      this.page.locator('[class*="showPackage"] [aria-label="continue"]'),
+      this.page.locator('[class*="showPackage"]').getByLabel('continue'),
     hotelName: () => this.page.getByTestId('hotel-name'),
   };
 

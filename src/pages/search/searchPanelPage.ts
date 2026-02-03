@@ -20,7 +20,7 @@ export class SearchPanelPage extends BasePage {
     acceptCookiesButton: () => this.page.locator('#cmCloseBanner'),
     airportInput: () => this.page.getByTestId('airport-input'),
     airportsSection: () =>
-      this.page.locator('[aria-label="airports"] div[class^="rah-static"]'),
+      this.page.getByLabel('airports').locator('div[class^="rah-static"]'),
     destinationListButton: () =>
       this.page.locator('[data-test-id="destination-input"] + span'),
     airportList: () =>
@@ -53,11 +53,11 @@ export class SearchPanelPage extends BasePage {
     roomsAndGuestsInput: () =>
       this.page.locator('[data-test-id="rooms-and-guest-input"]'),
     adultsSelector: () =>
-      this.page.locator('[aria-label="adult select"] select'),
+      this.page.getByLabel('adult select').locator('select'),
     childrenSelector: () =>
-      this.page.locator('[aria-label="child select"] select'),
+      this.page.getByLabel('child select').locator('select'),
     childrenAgesSelector: () =>
-      this.page.locator('[aria-label="age select"] select'),
+      this.page.getByLabel('age select').locator('select'),
     searchButton: () => this.page.getByTestId('search-button'),
     searchResults: () => this.page.getByTestId('search-results-list'),
   };
