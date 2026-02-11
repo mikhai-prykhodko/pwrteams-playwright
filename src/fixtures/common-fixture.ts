@@ -1,11 +1,11 @@
 import {test as base, Page} from '@playwright/test';
-import {HomePage} from '../src/pages/homePage';
-import {SearchPanelPage} from '../src/pages/search/searchPanelPage';
-import {SearchResultsPage} from '../src/pages/search/searchResultsPage';
-import {ProgressBarNavigationPage} from '../src/pages/booking/progressBarNavigationPage';
-import {PassengerDetailsPage} from '../src/pages/booking/passengerDetailsPage';
-import {HotelDetailsPage} from '../src/pages/booking/hotelDetailsPage';
-import {BookingSummaryPage} from '../src/pages/booking/bookingSummaryPage';
+import {HomePage} from '../pages/homePage';
+import {SearchPanelPage} from '../pages/search/searchPanelPage';
+import {SearchResultsPage} from '../pages/search/searchResultsPage';
+import {ProgressBarNavigationPage} from '../pages/booking/progressBarNavigationPage';
+import {PassengerDetailsPage} from '../pages/booking/passengerDetailsPage';
+import {HotelDetailsPage} from '../pages/booking/hotelDetailsPage';
+import {BookingSummaryPage} from '../pages/booking/bookingSummaryPage';
 export const test = base.extend<{
   homePage: HomePage;
   searchPanelPage: SearchPanelPage;

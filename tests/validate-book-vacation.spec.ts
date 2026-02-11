@@ -1,4 +1,4 @@
-import {test} from '../fixtures/common-fixture';
+import {test} from '../src/fixtures/common-fixture';
 import {faker} from '@faker-js/faker';
 import {expect} from '@playwright/test';
 import {PassengerTestData, TestData} from '../src/testData/generateTestData';
@@ -18,10 +18,10 @@ test.describe('Book a vacation', () => {
   }) => {
     let adultPassengers: PassengerTestData[] = [];
     let childPassengers: PassengerTestData[] = [];
-    test.step('Generate adult passengers', async () => {
+    await test.step('Generate adult passengers', async () => {
       adultPassengers = TestData.getPassengerTestData(2, false);
     });
-    test.step('Generate child passengers', async () => {
+    await test.step('Generate child passengers', async () => {
       childPassengers = TestData.getPassengerTestData(1, true);
     });
     await test.step('Close cookies banner', async () => {
