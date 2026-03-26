@@ -34,3 +34,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Deploy Playwright Report to Github Pages
+      if: ${{ !cancelled() && github.event_name != 'pull_request' }}
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: playwright-report
+        destination_dir: reports/${{ github.ref }}
