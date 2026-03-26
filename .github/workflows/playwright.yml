@@ -44,3 +44,22 @@ jobs:
         publish_branch: gh-pages
         publish_dir: playwright-report
         destination_dir: reports/${{ github.ref }}
+    - name: Add Playwright report link to job summary
+      if: ${{ !cancelled() }}
+      run: |
+        {
+          echo "## Playwright report"
+          echo ""
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "HTML report is attached as the **playwright-report** artifact (download from this run)."
+            echo ""
+            echo "[Open this run → Artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          else
+            REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/reports/${{ github.ref }}/"
+            echo "[**View HTML report on GitHub Pages**](${REPORT_URL})"
+            echo ""
+            echo "If the page is empty, wait a minute for Pages to publish after the \`gh-pages\` push."
+            echo ""
+            echo "You can also download **playwright-report** from [this run’s Artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+          fi
+        } >> "$GITHUB_STEP_SUMMARY"
